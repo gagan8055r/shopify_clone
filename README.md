@@ -17,11 +17,12 @@ This project is a clone of the popular e-commerce platform Shopify. It aims to r
   - HTML, CSS, JavaScript
   - React.js (or Angular.js, Vue.js)
   - Axios for API requests
- 
+
 
 - **Backend**:
   - Node.js (or Django, Ruby on Rails)
   - Express.js (or Flask, Sinatra) for building RESTful APIs
+
 
 
 ## Getting Started
