@@ -18,14 +18,13 @@ This project is a clone of the popular e-commerce platform Shopify. It aims to r
   - React.js (or Angular.js, Vue.js)
   - Redux (or Vuex, MobX) for state management
   - Axios for API requests
-  - Bootstrap (or Material-UI, Tailwind CSS) for styling
+  
 
 - **Backend**:
   - Node.js (or Django, Ruby on Rails)
   - Express.js (or Flask, Sinatra) for building RESTful APIs
-  - MongoDB (or PostgreSQL, MySQL) for database storage
-  - JWT (JSON Web Tokens) for user authentication
-  - Bcrypt.js (or Argon2, scrypt) for password hashing
+  - Auth0 for authentication
+
 
 ## Getting Started
 To get started with the project, follow these steps:
