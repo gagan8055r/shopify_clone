@@ -6,8 +6,6 @@ import Theme1 from "./components/Theme1";
 // import Header from "./components/Header";
 
 
-import Card1 from './components/Card1.js';
-import Card2 from './components/Card2.js';
 
 function App() {
     const [announcementText, setAnnouncementText] = useState('');
