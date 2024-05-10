@@ -1,0 +1,51 @@
+/*.store-container {*/
+/*    padding: 20px;*/
+/*    background-image: url('../sample_video/Screenshot 2024-05-10 001258.png');*/
+/*    background-size: cover ;*/
+
+/*}*/
+
+/*.store-heading {*/
+/*    font-size: 24px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.card-wrapper {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.card-spacing {*/
+/*    width: 80px; !* Adjust the width for the desired space between cards *!*/
+/*}*/
+
+
+/* Store.css */
+
+/* Set background image */
+
+
+/* Store.css */
+
+.store-container {
+    background-image: url('../sample_video/Screenshot 2024-05-10 001258.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: Black; /* Text color */
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.card-container > * {
+    margin: 0 100px; /* Adjust the horizontal margin between cards */
+}
