@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
-
+import HomeComponent from './HomeComponent';
+import CatalogComponent from './CatalogComponent';
+import ContactComponent from './ContactComponent';
 function Theme1({ announcementText, setAnnouncementText }) {
     const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(false);
     const [isTemplateVisible, setIsTemplateVisible] = useState(false);
     const [isFooterVisible, setIsFooterVisible] = useState(false);
-    const [imageUrl, setImageUrl] = useState('');
+    const [selectedComponent, setSelectedComponent] = useState(null);
     const handleAnnouncementVisibility = () => {
         setIsAnnouncementVisible(prevState => !prevState);
     };
 
+
+    const handleHomeClick = () => {
+        setSelectedComponent('home');
+    };
+
+    const handleCatalogClick = () => {
+        setSelectedComponent('catalog');
+    };
+
+    const handleContactClick = () => {
+        setSelectedComponent('contact');
+    };
     const handleTemplateVisibility = () => {
         setIsTemplateVisible(prevState => !prevState);
     };
@@ -22,9 +36,7 @@ function Theme1({ announcementText, setAnnouncementText }) {
         setAnnouncementText(text);
     };
 
-    const handleImageUrlChange = (event) => {
-        setImageUrl(event.target.value);
-    };
+
 
     return (
         <div style={{ display: 'flex', height: '100vh' }}>
@@ -72,17 +84,6 @@ function Theme1({ announcementText, setAnnouncementText }) {
                     Template
                 </h3>
 
-                {isTemplateVisible && (
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Enter image URL"
-                            value={imageUrl}
-                            onChange={handleImageUrlChange}
-                            style={{ marginTop: '5px', padding: '5px', borderRadius: '3px', border: '1px solid #ccc' }}
-                        />
-                    </div>
-                )}
                 <h3 style={{ cursor: 'pointer' }} onClick={handleFooterVisibility}>
                     <span style={{
                         marginRight: '15px',
@@ -112,6 +113,7 @@ function Theme1({ announcementText, setAnnouncementText }) {
                                 cursor: 'pointer',
                                 margin: '0 10px',
                             }}
+                            onClick={handleHomeClick}
                         >
                             HOME
                         </button>
@@ -125,6 +127,7 @@ function Theme1({ announcementText, setAnnouncementText }) {
                                 cursor: 'pointer',
                                 margin: '0 10px',
                             }}
+                            onClick={handleCatalogClick}
                         >
                             CATALOG
                         </button>
@@ -138,6 +141,7 @@ function Theme1({ announcementText, setAnnouncementText }) {
                                 cursor: 'pointer',
                                 margin: '0 10px',
                             }}
+                            onClick={handleContactClick}
                         >
                             CONTACT
                         </button>
@@ -145,48 +149,12 @@ function Theme1({ announcementText, setAnnouncementText }) {
 
                 </header>
 
-                <div style={{
-                    flex: 1,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    position: 'relative'
-                }}>
-                    {isTemplateVisible && imageUrl && (
-                        <img
-                            src={imageUrl}
-                            alt="Template"
-                            style={{maxWidth: '1000%', maxHeight: '100%', objectFit: 'contain'}}
-                        />
-                    )}
-                    {isTemplateVisible && !imageUrl && <p>No image provided</p>}
+                {selectedComponent === 'home' && <HomeComponent />}
+                {selectedComponent === 'catalog' && <CatalogComponent />}
+                {selectedComponent === 'contact' && <ContactComponent />}
 
-                    {isTemplateVisible && imageUrl && (
-                        <div style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)'
-                        }}>
-            <textarea
-                placeholder="Enter text here"
-                maxLength={10}
-                style={{
-                    width: '200px',
-                    height: '100px',
-                    resize: 'none',
-                    padding: '5px',
-                    display: "flex",
-                    color: 'white',
-                    fontSize: '30px',
-                    background: 'transparent',
-                    alignItems: "center",
-                    textAlign: 'center'
-                }}
-            />
-                        </div>
-                    )}
-                </div>
+
+
 
 
             </div>
