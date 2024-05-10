@@ -4,7 +4,7 @@ import videoBG from "../sample_video/3283810-hd_1280_720_30fps.mp4"; // Import y
 import './Landing.css'; // Import your CSS file for styling
 
 export function Landing() {
-    const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
+    const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
     const handleCreateStoreClick = () => {
         if (!isAuthenticated) {
@@ -23,8 +23,16 @@ export function Landing() {
                 </div>
                 <nav className="nav-links">
                     <ul>
-                        <li><button onClick={() => loginWithRedirect()}>Log In</button></li>
-                        <li><Link to={isAuthenticated ? "/store" : "/"}><button onClick={handleCreateStoreClick}>Create your store</button></Link></li>
+                        {
+                            isAuthenticated ? (
+                                <>
+                                    <li><button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button></li>
+                                    <li><Link to="/store"><button onClick={handleCreateStoreClick}>Create your store</button></Link></li>
+                                </>
+                            ) : (
+                                <li><button onClick={() => loginWithRedirect()}>Log In</button></li>
+                            )
+                        }
                     </ul>
                 </nav>
             </header>
@@ -40,13 +48,6 @@ export function Landing() {
                     </div>
                 </div>
             </section>
-
-            {
-                isAuthenticated && <p>{user.name}</p>
-            }
-            {
-                isAuthenticated && <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>
-            }
         </div>
     )
 }
