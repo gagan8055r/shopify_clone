@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
 import ThemeModal from './ThemeModal';
 import UserContext from './UserContext';
-import './RegistrationForm.css'
+
 const RegistrationForm = ({ userName }) => {
     const { user } = useContext(UserContext);
     const [storeName, setStoreName] = useState('');
@@ -27,11 +27,6 @@ const RegistrationForm = ({ userName }) => {
 
     const handleStoreNameSubmit = async (event) => {
         event.preventDefault();
-        if (!user) {
-            console.error('User not available');
-            return;
-        }
-
         const url = 'https://capital-duck-18.hasura.app/api/rest/create-store';
 
         const data = {
@@ -71,13 +66,13 @@ const RegistrationForm = ({ userName }) => {
     const navigateToTheme = (themeId, storeId) => {
         switch (themeId) {
             case 1:
-                navigate(`/light-theme/${storeId}`);
+                navigate(`/light-theme`);
                 break;
             case 2:
-                navigate(`/dark-theme/${storeId}`);
+                navigate(`/dark-theme`);
                 break;
             case 3:
-                navigate(`/colorful-theme/${storeId}`);
+                navigate(`/colorful-theme`);
                 break;
             default:
                 break;
@@ -85,8 +80,7 @@ const RegistrationForm = ({ userName }) => {
     };
 
     return (
-
-        <div className="registration-form">
+        <div>
             <h1>Register Your Store</h1>
             <form onSubmit={handleStoreNameSubmit}>
                 <label>
@@ -97,7 +91,7 @@ const RegistrationForm = ({ userName }) => {
                     Choose Theme
                 </button>
                 {selectedTheme && <p>Theme "{selectedTheme}" has been selected!</p>}
-                <button type="submit" style={{width:'130px'}}>Next</button>
+                <button type="submit">Next</button>
             </form>
             {isModalOpen && <ThemeModal closeModal={closeModal} />}
         </div>
