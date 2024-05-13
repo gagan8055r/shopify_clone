@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 import ThemeModal from './ThemeModal';
 import UserContext from './UserContext';
-
+import './RegistrationForm.css'
 const RegistrationForm = ({ userName }) => {
     const { user } = useContext(UserContext);
     const [storeName, setStoreName] = useState('');
@@ -27,6 +27,11 @@ const RegistrationForm = ({ userName }) => {
 
     const handleStoreNameSubmit = async (event) => {
         event.preventDefault();
+        if (!user) {
+            console.error('User not available');
+            return;
+        }
+
         const url = 'https://capital-duck-18.hasura.app/api/rest/create-store';
 
         const data = {
@@ -66,13 +71,13 @@ const RegistrationForm = ({ userName }) => {
     const navigateToTheme = (themeId, storeId) => {
         switch (themeId) {
             case 1:
-                navigate(`/light-theme`);
+                navigate(`/light-theme/${storeId}`);
                 break;
             case 2:
-                navigate(`/dark-theme`);
+                navigate(`/dark-theme/${storeId}`);
                 break;
             case 3:
-                navigate(`/colorful-theme`);
+                navigate(`/colorful-theme/${storeId}`);
                 break;
             default:
                 break;
@@ -80,7 +85,8 @@ const RegistrationForm = ({ userName }) => {
     };
 
     return (
-        <div>
+
+        <div className="registration-form">
             <h1>Register Your Store</h1>
             <form onSubmit={handleStoreNameSubmit}>
                 <label>
@@ -91,7 +97,7 @@ const RegistrationForm = ({ userName }) => {
                     Choose Theme
                 </button>
                 {selectedTheme && <p>Theme "{selectedTheme}" has been selected!</p>}
-                <button type="submit">Next</button>
+                <button type="submit" style={{width:'130px'}}>Next</button>
             </form>
             {isModalOpen && <ThemeModal closeModal={closeModal} />}
         </div>
