@@ -1,11 +1,15 @@
+
+import React, { useContext } from 'react';
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import videoBG from "../sample_video/3283810-hd_1280_720_30fps.mp4"; // Import your video source
 import './Landing.css'; // Import your CSS file for styling
 
+import UserContext from "./UserContext";
 export function Landing() {
-    const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
-
+    const { loginWithRedirect, logout } = useAuth0();
+const {isAuthenticated} = useContext(UserContext);
     const handleCreateStoreClick = () => {
         if (!isAuthenticated) {
             alert("Please log in first.");
@@ -26,8 +30,9 @@ export function Landing() {
                         {
                             isAuthenticated ? (
                                 <>
+
                                     <li><button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button></li>
-                                    <li><Link to="/store"><button onClick={handleCreateStoreClick}>Create your store</button></Link></li>
+                                    <li><Link to="/store-registration"><button onClick={handleCreateStoreClick}>Create your store</button></Link></li>
                                 </>
                             ) : (
                                 <li><button onClick={() => loginWithRedirect()}>Log In</button></li>
