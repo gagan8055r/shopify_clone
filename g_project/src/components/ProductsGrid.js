@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-function ProductsGrid() {
+// import {useParams} from "react-router-dom";
+import './ProductsGrid.css'
+function ProductsGrid({storeId}) {
+    // const {storeId} = useParams();
     const [products, setProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
@@ -18,7 +20,7 @@ function ProductsGrid() {
         };
 
         fetch(
-            "https://capital-duck-18.hasura.app/api/rest/products?store_id=f4861535-0b57-46ea-95d7-8441a50d54d4",
+            `https://capital-duck-18.hasura.app/api/rest/products?store_id=${storeId}`,
             {
                 headers,
                 method: "GET",
@@ -29,7 +31,7 @@ function ProductsGrid() {
                 setProducts(data.products);
             })
             .catch((error) => console.error("Error fetching products:", error));
-    }, []);
+    }, [storeId]);
 
 
 
@@ -57,7 +59,7 @@ function ProductsGrid() {
                 },
                 body: JSON.stringify({
                     id: editingProduct.id,
-                    store_id: "f4861535-0b57-46ea-95d7-8441a50d54d4",
+                    store_id: `${storeId}`,
                     name: formData.name,
                     price: formData.price,
                     description: formData.description,
@@ -93,7 +95,7 @@ function ProductsGrid() {
                         "7qN1gqjjqtf1QXkkW435OMGfAkmbMpSwSMc3EdUtVFnworAdDKosz6k8LB0nuL4v",
                 },
                 body: JSON.stringify({
-                    store_id: "f4861535-0b57-46ea-95d7-8441a50d54d4",
+                    store_id: `${storeId}`,
                     name: formData.name,
                     price: formData.price,
                     description: formData.description,
@@ -126,7 +128,7 @@ function ProductsGrid() {
             body: JSON.stringify({ id }),
         })
             .then(() => {
-                setProducts(products.filter((product) => product.id !== id)); // Remove the product from local state
+                setProducts(products.filter((product) => product.id !== id));
             })
             .catch((error) => console.error("Failed to delete product:", error));
     };
@@ -140,63 +142,33 @@ function ProductsGrid() {
         });
         setFormData({
             name: product.name,
-            price: product.price.toString(), // Convert price to string
+            price: product.price.toString(),
             description: product.description,
         });
         setShowModal(true);
     };
     return (
-        <div
-            style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "20px",
-                justifyContent: "center",
-                padding: "20px",
-            }}
-        >
+        <div className="product-grid">
             {products.map((product, index) => (
-                <div
-                    key={index}
-                    style={{
-                        flex: "1 0 30%",
-                        border: "1px solid #ccc",
-                        borderRadius: "10px",
-                        padding: "10px",
-                        boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-                    }}
-                >
-                    <h2 style={{fontSize: "18px", marginBottom: "10px"}}>
-                        {product.name}
-                    </h2>
-                    <p style={{marginBottom: "10px"}}>{product.description}</p>
-                    <p style={{fontWeight: "bold"}}>Rs.{product.price}</p>
-                    <button onClick={() => handleDelete(product.id)}>Delete</button>
-                    <button
-                        onClick={() => handleEdit(product)}
-                        style={{marginLeft: "10px"}}
-                    >
-                        Edit
-                    </button>
+                <div className="product-card">
+                    <h2>{product.name}</h2>
+                    <p className="price">Rs.{product.price}</p>
+                    <p>{product.description}</p>
+                    <div className="actions">
+
+                        <button onClick={() => handleDelete(product.id)}>Delete</button>
+                        <button
+                            onClick={() => handleEdit(product)}>
+                            Edit
+                        </button>
+                    </div>
                 </div>
             ))}
-            <button onClick={() => setShowModal(true)} style={{marginTop: "20px"}}>
+            <button onClick={() => setShowModal(true)} style={{width:'100px' ,height:'50px' ,borderRadius:'10px'}}>
                 Add Product
             </button>
             {showModal && (
-                <div
-                    style={{
-                        position: "fixed",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        backgroundColor: "white",
-                        padding: "20px",
-                        zIndex: 1000,
-                        border: "1px solid #ccc",
-                        borderRadius: "10px",
-                        boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
-                    }}>
+                <div>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Name:</label>
                         <br />
