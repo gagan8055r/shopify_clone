@@ -1,0 +1,39 @@
+/* DarkThemeComponent.css */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    text-align: center;
+}
+
+.dark-theme h2 {
+    color: #ccc;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.dark-theme p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.dark-theme .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.dark-theme button {
+    background-color: #555;
+    border: 1px solid #777;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.dark-theme button:hover {
+    background-color: #777;
+}
