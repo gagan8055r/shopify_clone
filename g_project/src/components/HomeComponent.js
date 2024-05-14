@@ -1,10 +1,12 @@
 import React from 'react';
 import './HomeComponent.css';
 
-const HomeComponent = () => {
+const HomeComponent = ({ themeData }) => {
     return (
         <div className="home-container">
-            <h1 className="home-title">Bring Your Dreams Come True</h1>
+            <h1 className="home-heading">{themeData?.heading}</h1>
+            <p className="home-description">{themeData?.description}</p>
+            {themeData?.image_url && <img className="home-image" src={themeData.image_url} alt="Theme" />}
         </div>
     );
 };
