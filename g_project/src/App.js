@@ -8,12 +8,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import DarkThemeComponent from "./components/DarkThemeComponent";
 import LightThemeComponent from "./components/LightThemeComponent";
 import ColorfulThemeComponent from "./components/ColorfulThemeComponent";
-
+import SellerWebsite from "./components/SellerWebsite";
 function App() {
     const { isAuthenticated, user } = useAuth0();
     return (
         <div>
+            {/*<PreviewProvider>*/}
             <Router>
+
                 <UserContext.Provider value={{ user, isAuthenticated }}>
                     <Routes>
                         <Route exact path="/" element={<Landing />} />
@@ -28,9 +30,11 @@ function App() {
                         <Route path="/colorful-theme/:storeId" element={<ColorfulThemeComponent />} >
                             <Route path="" element={<ProductsGrid />} />
                         </Route>
+                        <Route path="/store/:storeId" element={<SellerWebsite />} />
                     </Routes>
                 </UserContext.Provider>
             </Router>
+            {/*</PreviewProvider>*/}
         </div>
     );
 }

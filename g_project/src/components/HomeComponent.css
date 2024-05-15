@@ -1,14 +1,50 @@
 .home-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #ffc0cb; /* Light pink background color */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-.home-title {
-    font-size: 3rem;
+.home-heading {
+    font-size: 2.5rem;
+    color: #ff1493; /* Deep pink color for heading */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.home-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 25px;
+    max-width: 600px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.home-image {
+    max-width: 80%;
+    height: auto;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #fff;
+    border: 1px solid #ccc;
     color: #333;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #e0e0e0;
 }
