@@ -1,15 +1,38 @@
 import React from 'react';
+import grapesjs from 'grapesjs';
+import 'grapesjs/dist/css/grapes.min.css';
 import './HomeComponent.css';
 
-const HomeComponent = ({ themeData }) => {
-    return (
-        <div className="home-container">
-            <h1 className="home-heading">{themeData?.heading}</h1>
-            <p className="home-description">{themeData?.description}</p>
-            {themeData?.image_url && <img className="home-image" src={themeData.image_url} alt="Theme" />}
-        </div>
-    );
-};
+class HomeComponent extends React.Component {
+    containerRef = React.createRef();
+
+    componentDidMount() {
+        const editor = grapesjs.init({
+            container: this.containerRef.current,
+            height: '300px',
+            width: 'auto',
+            storageManager: false,
+            panels: { defaults: [] },
+        });
+
+        // Store the editor instance for later use or cleanup
+        this.editor = editor;
+    }
+
+    componentWillUnmount() {
+        // Destroy the editor instance when the component unmounts
+        this.editor.destroy();
+    }
+
+    render() {
+        return (
+            <div>
+                <div ref={this.containerRef}>
+                    <h1>Hello World Component!</h1>
+                </div>
+            </div>
+        );
+    }
+}
 
 export default HomeComponent;
-

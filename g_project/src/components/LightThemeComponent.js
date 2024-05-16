@@ -137,15 +137,15 @@
 //
 // export default LightThemeComponent;
 import React, { useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import ProductsGrid from './ProductsGrid';
 import './LightThemeComponent.css';
 import HomeComponent from './HomeComponent';
 import ContactComponent from './ContactComponent';
 
 const LightThemeComponent = () => {
-    const location = useLocation();
-    const themeData = location.state?.theme;
+    // const location = useLocation();
+    // const themeData = location.state?.theme;
     const { storeId } = useParams();
     const [showComponent, setShowComponent] = useState('home');
 
@@ -161,7 +161,7 @@ const LightThemeComponent = () => {
                     <button onClick={() => handleComponentClick('catalog')}>Catalog</button>
                     <button onClick={() => handleComponentClick('contact')}>Contact</button>
                 </div>
-                {showComponent === 'home' && <HomeComponent themeData={themeData} />}
+                {showComponent === 'home' && <HomeComponent text="Hello, World!" fontSize="16px" />}
                 {showComponent === 'catalog' && <ProductsGrid storeId={storeId} />}
                 {showComponent === 'contact' && <ContactComponent storeId={storeId} />}
             </div>
