@@ -1,6 +1,6 @@
 import React from 'react';
 import { Landing } from "./components/Landing";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes  } from "react-router-dom";
 import ProductsGrid from "./components/ProductsGrid";
 import RegistrationForm from "./components/RegistrationForm";
 import UserContext from "./components/UserContext";
@@ -9,6 +9,10 @@ import DarkThemeComponent from "./components/DarkThemeComponent";
 import LightThemeComponent from "./components/LightThemeComponent";
 import ColorfulThemeComponent from "./components/ColorfulThemeComponent";
 import SellerWebsite from "./components/SellerWebsite";
+// import CraftEditor from "./components/CraftEditor";
+// import Toolbox from "./components/Toolbox";
+// import EditorWrapper from "./components/Editorwrapper";
+
 function App() {
     const { isAuthenticated, user } = useAuth0();
     return (
@@ -34,6 +38,9 @@ function App() {
                     </Routes>
                 </UserContext.Provider>
             </Router>
+            {/*<CraftEditor />*/}
+            {/*<EditorWrapper />*/}
+
             {/*</PreviewProvider>*/}
         </div>
     );
