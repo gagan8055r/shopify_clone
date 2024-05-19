@@ -1,14 +1,47 @@
+
 .home-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     background-color: #ffc0cb; /* Light pink background color */
 }
 
-.home-title {
-    font-size: 3rem;
+.editor-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    height: 100vh;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#blocks {
+    margin-bottom: 10px;
+}
+
+.custom-heading {
+    font-size: 2rem;
     color: #333;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.traits-container {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.text-component {
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: both; /* Allow resizing */
+    overflow: auto; /* Enable scrollbars if content overflows */
+    font-size: 14px;
+}
+
+.gjs-block {
+    width: 80px; /* Set the width of blocks */
+    height: 80px; /* Set the height of blocks */
+    margin: 5px; /* Add margin between blocks */
 }

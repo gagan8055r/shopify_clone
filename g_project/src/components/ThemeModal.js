@@ -1,6 +1,7 @@
+
 import React from "react";
-import ThemeOption from "./ThemeOption";
-import './ThemeModal.css'; // Import the CSS file
+// import ThemeOption from "./ThemeOption";
+import './ThemeModal.css';
 
 const themes = [
     { id: 1, name: "Light" },
@@ -9,13 +10,19 @@ const themes = [
 ];
 
 const ThemeModal = ({ closeModal }) => {
+    const handleThemeSelect = (theme) => {
+        closeModal(theme);
+    };
+
     return (
-        <div className="modal">
+        <div className="modal-overlay">
             <div className="modal-content">
                 <h2>Select a Theme</h2>
                 <ul>
                     {themes.map((theme) => (
-                        <ThemeOption key={theme.id} theme={theme} onSelect={closeModal} />
+                        <li key={theme.id} onClick={() => handleThemeSelect(theme)}>
+                            {theme.name}
+                        </li>
                     ))}
                 </ul>
                 <button onClick={() => closeModal()}>Close</button>

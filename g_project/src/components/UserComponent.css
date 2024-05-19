@@ -1,0 +1,78 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* UserComponent styles */
+.user-component {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-component h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-component .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.user-component button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-component button:hover {
+    background-color: #555;
+}
+
+.user-component .component-container {
+    margin-top: 40px; /* Increased margin-top */
+}
+
+/* HomeUserComponent styles */
+.home-user-component {
+    text-align: center;
+}
+
+/* CardUserComponent styles */
+.card-user-component {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-user-component .card {
+    width: 200px; /* Increased card width */
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ContactUserComponent styles */
+.contact-user-component {
+    text-align: center;
+}
