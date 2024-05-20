@@ -8,16 +8,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 import DarkThemeComponent from "./components/DarkThemeComponent";
 import LightThemeComponent from "./components/LightThemeComponent";
 import ColorfulThemeComponent from "./components/ColorfulThemeComponent";
-import SellerWebsite from "./components/SellerWebsite";
-// import CraftEditor from "./components/CraftEditor";
-// import Toolbox from "./components/Toolbox";
-// import EditorWrapper from "./components/Editorwrapper";
-
+import UserComponent from "./components/UserComponent";
 function App() {
     const { isAuthenticated, user } = useAuth0();
+
+    const sellerTheme = {
+        primaryColor: "#ff5733",
+        primaryColorHover: "#c70039",
+        secondaryColor: "#900c3f",
+        secondaryColorHover: "#581845"
+    };
     return (
         <div>
-            {/*<PreviewProvider>*/}
             <Router>
 
                 <UserContext.Provider value={{ user, isAuthenticated }}>
@@ -25,23 +27,20 @@ function App() {
                         <Route exact path="/" element={<Landing />} />
                         <Route path="/store-registration" element={<RegistrationForm/>} />
 
-                        <Route path="/light-theme/:storeId" element={<LightThemeComponent />} >
+                        <Route path="/store-edit1/:storeId" element={  <LightThemeComponent/>} >
                             <Route path="" element={<ProductsGrid />} />
                         </Route>
-                        <Route path="/dark-theme/:storeId" element={<DarkThemeComponent />} >
+                        <Route path="/store-edit2/:storeId" element={<DarkThemeComponent />} >
                             <Route path="" element={<ProductsGrid />} />
                         </Route>
-                        <Route path="/colorful-theme/:storeId" element={<ColorfulThemeComponent />} >
+                        <Route path="/store-edit3/:storeId" element={<ColorfulThemeComponent />} >
                             <Route path="" element={<ProductsGrid />} />
                         </Route>
-                        <Route path="/store/:storeId" element={<SellerWebsite />} />
+                        <Route path="/:storeId" element={<UserComponent/>}>
+                    </Route>
                     </Routes>
                 </UserContext.Provider>
             </Router>
-            {/*<CraftEditor />*/}
-            {/*<EditorWrapper />*/}
-
-            {/*</PreviewProvider>*/}
         </div>
     );
 }

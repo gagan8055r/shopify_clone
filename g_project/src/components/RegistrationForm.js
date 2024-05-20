@@ -220,13 +220,13 @@ const RegistrationForm = () => {
     const navigateToTheme = (themeId, storeId, themeData) => {
         switch (themeId) {
             case 1:
-                navigate(`/light-theme/${storeId}`, { state: { theme: themeData } });
+                navigate(`/store-edit1/${storeId}`, { state: { theme: themeData } });
                 break;
             case 2:
-                navigate(`/dark-theme/${storeId}`, { state: { theme: themeData } });
+                navigate(`/store-edit2/${storeId}`, { state: { theme: themeData } });
                 break;
             case 3:
-                navigate(`/colorful-theme/${storeId}`, { state: { theme: themeData } });
+                navigate(`/store-edit3/${storeId}`, { state: { theme: themeData } });
                 break;
             default:
                 break;

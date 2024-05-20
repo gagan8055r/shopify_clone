@@ -149,8 +149,9 @@ function ProductsGrid({storeId}) {
     };
     return (
         <div className="product-grid">
+            <div className="card-container">
             {products.map((product, index) => (
-                <div className="product-card">
+                <div className="product-card" key={product.id}>
                     <h2>{product.name}</h2>
                     <p className="price">Rs.{product.price}</p>
                     <p>{product.description}</p>
@@ -164,58 +165,64 @@ function ProductsGrid({storeId}) {
                     </div>
                 </div>
             ))}
-            <button onClick={() => setShowModal(true)} style={{width:'100px' ,height:'50px' ,borderRadius:'10px'}}>
+            <button onClick={() => setShowModal(true)} style={{width:'100px', height:'50px',padding:'inherit',margin:'10px'}}>
                 Add Product
             </button>
             {showModal && (
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">Name:</label>
-                        <br />
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <br />
-                        <label htmlFor="price">Price:</label>
-                        <br />
-                        <input
-                            type="number"
-                            id="price"
-                            name="price"
-                            value={formData.price}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <br />
-                        <label htmlFor="description">Description:</label>
-                        <br />
-                        <textarea
-                            id="description"
-                            name="description"
-                            value={formData.description}
-                            onChange={handleInputChange}
-                            required
-                        />
-                        <br />
-                        <button type="submit">Add</button>
-                        <button
-                            type="button"
-                            onClick={() => {setShowModal(false)
-                                setEditingProduct(null);
-                                setFormData({ name: "", price: "", description: "" });
-                        }}
-                            style={{ marginLeft: "10px" }}
-                        >
-                            Cancel
-                        </button>
-                    </form>
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>{editingProduct ? 'Edit Product' : 'Add Product'}</h2>
+                        <form onSubmit={handleSubmit}>
+                            <label htmlFor="name">Name:</label>
+                            <br/>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <br/>
+                            <label htmlFor="price">Price:</label>
+                            <br/>
+                            <input
+                                type="number"
+                                id="price"
+                                name="price"
+                                value={formData.price}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <br/>
+                            <label htmlFor="description">Description:</label>
+                            <br/>
+                            <textarea
+                                id="description"
+                                name="description"
+                                value={formData.description}
+                                onChange={handleInputChange}
+                                required
+                            />
+                            <br/>
+                            <button type="submit">{editingProduct ? 'Update' : 'Add'}</button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowModal(false)
+                                    setEditingProduct(null);
+                                    setFormData({name: "", price: "", description: ""});
+                                }}
+                                style={{marginLeft: "10px"}}
+                            >
+                                Cancel
+                            </button>
+                        </form>
+                    </div>
                 </div>
+
             )}
+            </div>
         </div>
     );
 }

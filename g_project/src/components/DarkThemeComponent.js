@@ -37,7 +37,7 @@
 import React, { useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import ProductsGrid from './ProductsGrid';
-import './LightThemeComponent.css';
+import './DarkThemeComponent.css';
 import HomeComponent from './HomeComponent';
 import ContactComponent from './ContactComponent';
 
@@ -61,7 +61,7 @@ const DarkThemeComponent = () => {
                 </div>
                 {showComponent === 'home' && <HomeComponent themeData={themeData} />}
                 {showComponent === 'catalog' && <ProductsGrid storeId={storeId} />}
-                {showComponent === 'contact' && <ContactComponent />}
+                {showComponent === 'contact' && <ContactComponent storeId={storeId}/>}
             </div>
         </div>
     );
