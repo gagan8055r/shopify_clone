@@ -10,6 +10,9 @@ function ProductsGrid({storeId}) {
         name: "",
         price: "",
         description: "",
+        nameFont: "Arial",
+        priceFont: "Arial",
+        descriptionFont: "Arial"
     });
 
     useEffect(() => {
@@ -46,7 +49,13 @@ function ProductsGrid({storeId}) {
     const handleSubmit = (event) => {
 
         event.preventDefault();
+        const { name, price, description, nameFont, priceFont, descriptionFont } = formData;
 
+        const content_styles = {
+            nameFont,
+            priceFont,
+            descriptionFont
+        };
 
         if (editingProduct) {
 
@@ -60,9 +69,10 @@ function ProductsGrid({storeId}) {
                 body: JSON.stringify({
                     id: editingProduct.id,
                     store_id: `${storeId}`,
-                    name: formData.name,
-                    price: formData.price,
-                    description: formData.description,
+                    name,
+                    price,
+                    description,
+                    content_styles: JSON.stringify(content_styles)
                 }),
             })
                 .then((response) => response.json())
@@ -80,7 +90,9 @@ function ProductsGrid({storeId}) {
                     setProducts(updatedProducts);
                     setEditingProduct(null);
                     setShowModal(false);
-                    setFormData({ name: "", price: "", description: "" });
+                    // setFormData({ name: "", price: "", description: "" });
+                    setFormData({ name: "", price: "", description: "", nameFont: formData.nameFont, priceFont: formData.priceFont, descriptionFont: formData.descriptionFont });
+
                 })
                 .catch((error) => console.error("Failed to update product:", error));
         }
@@ -96,9 +108,10 @@ function ProductsGrid({storeId}) {
                 },
                 body: JSON.stringify({
                     store_id: `${storeId}`,
-                    name: formData.name,
-                    price: formData.price,
-                    description: formData.description,
+                    name,
+                    price,
+                    description,
+                    content_styles: JSON.stringify(content_styles)
                 }),
             })
                 .then((response) => response.json())
@@ -108,10 +121,19 @@ function ProductsGrid({storeId}) {
                         name: formData.name,
                         price: formData.price,
                         id: data.insert_products_one.id,
+                        content_styles: JSON.stringify(content_styles)
                     };
                     setProducts([...products, newProduct]);
                     setShowModal(false);
-                    setFormData({name: "", price: "", description: ""}); // Reset form
+                    setShowModal(false);
+                    setFormData({
+                        name: "",
+                        price: "",
+                        description: "",
+                        nameFont: formData.nameFont,
+                        priceFont: formData.priceFont,
+                        descriptionFont: formData.descriptionFont
+                    });
                 })
                 .catch((error) => console.error("Failed to add product:", error));
         }
@@ -147,14 +169,22 @@ function ProductsGrid({storeId}) {
         });
         setShowModal(true);
     };
+    const handleFontChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
     return (
         <div className="product-grid">
             <div className="card-container">
             {products.map((product, index) => (
                 <div className="product-card" key={product.id}>
-                    <h2>{product.name}</h2>
-                    <p className="price">Rs.{product.price}</p>
-                    <p>{product.description}</p>
+                    <h2 style={{fontFamily: product.content_styles ? JSON.parse(product.content_styles).nameFont : "Arial"}}>{product.name}</h2>
+                    <p className="price"
+                       style={{fontFamily: product.content_styles ? JSON.parse(product.content_styles).priceFont : "Arial"}}>Rs.{product.price}</p>
+                    <p style={{fontFamily: product.content_styles ? JSON.parse(product.content_styles).descriptionFont : "Arial"}}>{product.description}</p>
                     <div className="actions">
 
                         <button onClick={() => handleDelete(product.id)}>Delete</button>
@@ -174,7 +204,7 @@ function ProductsGrid({storeId}) {
                         <h2>{editingProduct ? 'Edit Product' : 'Add Product'}</h2>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="name">Name:</label>
-                            <br/>
+
                             <input
                                 type="text"
                                 id="name"
@@ -183,9 +213,9 @@ function ProductsGrid({storeId}) {
                                 onChange={handleInputChange}
                                 required
                             />
-                            <br/>
+
                             <label htmlFor="price">Price:</label>
-                            <br/>
+
                             <input
                                 type="number"
                                 id="price"
@@ -194,9 +224,9 @@ function ProductsGrid({storeId}) {
                                 onChange={handleInputChange}
                                 required
                             />
-                            <br/>
+
                             <label htmlFor="description">Description:</label>
-                            <br/>
+
                             <textarea
                                 id="description"
                                 name="description"
@@ -204,16 +234,55 @@ function ProductsGrid({storeId}) {
                                 onChange={handleInputChange}
                                 required
                             />
-                            <br/>
+
+                            <label htmlFor="nameFont">Name Font:</label>
+                            <select
+                                id="nameFont"
+                                name="nameFont"
+                                value={formData.nameFont}
+                                onChange={handleFontChange}
+                            >
+                                <option value="Arial">Arial</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+
+                            <label htmlFor="priceFont">Price Font:</label>
+                            <select
+                                id="priceFont"
+                                name="priceFont"
+                                value={formData.priceFont}
+                                onChange={handleFontChange}
+                            >
+                                <option value="Arial">Arial</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+
+                            <label htmlFor="descriptionFont">Description Font:</label>
+                            <select
+                                id="descriptionFont"
+                                name="descriptionFont"
+                                value={formData.descriptionFont}
+                                onChange={handleFontChange}
+                            >
+                                <option value="Arial">Arial</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                            </select>
+
                             <button type="submit">{editingProduct ? 'Update' : 'Add'}</button>
                             <button
                                 type="button"
                                 onClick={() => {
                                     setShowModal(false)
                                     setEditingProduct(null);
-                                    setFormData({name: "", price: "", description: ""});
+                                    setFormData({ name: "", price: "", description: "" });
                                 }}
-                                style={{marginLeft: "10px"}}
+                                style={{ marginLeft: "10px" }}
                             >
                                 Cancel
                             </button>
