@@ -76,3 +76,8 @@ body {
 .contact-user-component {
     text-align: center;
 }
+
+button{
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+}

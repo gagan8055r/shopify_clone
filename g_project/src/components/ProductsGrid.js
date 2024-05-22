@@ -805,7 +805,7 @@ function ProductsGrid({ storeId }) {
                 </button>
                 {showModal && (
                     <div className="modal-overlay">
-                        <div className="modal-content">
+                        <div className="modal-content1">
                             <h2>{editingProduct ? 'Edit Product' : 'Add Product'}</h2>
                             <form onSubmit={handleSubmit}>
                                 <label htmlFor="name">Name:</label>

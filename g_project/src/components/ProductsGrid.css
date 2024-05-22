@@ -72,35 +72,35 @@
     align-items: center;
 }
 
-.modal-content {
+.modal-content1 {
     background-color: lavender;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 400px;
     height: 620px;
     position: relative;
 }
 
-.modal-content h2 {
+.modal-content1 h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.modal-content form {
+.modal-content1 form {
     display: flex;
     flex-direction: column;
 }
 
-.modal-content label {
+.modal-content1 label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.modal-content input,
-.modal-content textarea {
+.modal-content1 input,
+.modal-content1 textarea {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -108,13 +108,13 @@
     transition: border-color 0.3s ease;
 }
 
-.modal-content input:focus,
-.modal-content textarea:focus {
+.modal-content1 input:focus,
+.modal-content1 textarea:focus {
     outline: none;
     border-color: #3f51b5;
 }
 
-.modal-content button[type="submit"] {
+.modal-content1 button[type="submit"] {
     background-color: #3f51b5;
     color: #fff;
     border: none;
@@ -125,11 +125,11 @@
     align-self: flex-end;
 }
 
-.modal-content button[type="submit"]:hover {
+.modal-content1 button[type="submit"]:hover {
     background-color: #283593;
 }
 
-.modal-content button[type="button"] {
+.modal-content1 button[type="button"] {
     background-color: #f44336;
     color: #fff;
     border: none;
@@ -141,6 +141,6 @@
     align-self: flex-end;
 }
 
-.modal-content button[type="button"]:hover {
+.modal-content1 button[type="button"]:hover {
     background-color: #c62828;
 }
