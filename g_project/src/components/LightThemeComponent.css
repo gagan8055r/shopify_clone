@@ -211,7 +211,7 @@
     display: flex;
     justify-content: space-around;
     margin: 1rem 0;
-    background-color: var(--secondary-color);
+    /*background-color: var(--secondary-color);*/
 }
 
 .button-primary,
@@ -233,10 +233,10 @@
 }
 
 .button-secondary {
-    background-color: var(--secondary-color);
+    /*background-color: var(--secondary-color);*/
     color: #fff;
 }
 
 .button-secondary:hover {
-    background-color: var(--secondary-color-hover);
+    /*background-color: var(--secondary-color-hover);*/
 }

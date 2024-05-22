@@ -388,7 +388,7 @@ function UserComponent() {
                 setAdditionalData(data);
                 console.log(data);
 
-                // Set the button color
+
                 if (data.stores_by_pk.color_homes.length > 0) {
                     setButtonColor(data.stores_by_pk.color_homes[0].color);
                 }
