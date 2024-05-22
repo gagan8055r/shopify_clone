@@ -1,0 +1,23 @@
+.color-picker-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.color-picker button {
+    margin: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.color-picker button:hover {
+    background-color: #0056b3;
+}
+
+.color-picker {
+    display: inline-block;
+    margin-top: 10px;
+}
