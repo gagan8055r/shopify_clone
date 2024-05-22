@@ -1,3 +1,50 @@
+/*.contact-user-component {*/
+/*    background-color: #dbd1d1;*/
+/*    color: #fff;*/
+/*    border-radius: 10px;*/
+/*    !*padding: 20px;*!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);*/
+/*    transition: transform 0.3s ease-in-out;*/
+/*}*/
+
+/*.contact-user-component:hover {*/
+/*    transform: scale(1.05);*/
+/*}*/
+
+/*.contact-user-component h3 {*/
+/*    font-size: 2rem;*/
+/*    margin-bottom: 20px;*/
+/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+/*    text-transform: uppercase;*/
+/*    letter-spacing: 2px;*/
+/*}*/
+
+/*.contact-user-component p {*/
+/*    font-size: 1.2rem;*/
+/*    margin-bottom: 10px;*/
+/*    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*.contact-user-component p:first-child {*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.contact-user-component p:last-child {*/
+/*    font-style: italic;*/
+/*}*/
+
+/*.contact-user-component p:before {*/
+/*    content: "• ";*/
+/*    color: #ff9966;*/
+/*    font-weight: bold;*/
+/*    margin-right: 5px;*/
+/*}*/
+
+
+
 .contact-user-component {
     background-color: #dbd1d1;
     color: #fff;
